@@ -1,0 +1,165 @@
+.section {
+  background: var(--surface-container-low);
+  padding: var(--section-gap) 0;
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--margin-mobile);
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gutter);
+  align-items: end;
+  margin-bottom: 64px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.title {
+  font-size: 48px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.description {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--on-surface-variant);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.card {
+  padding: 32px;
+  border-radius: 2rem;
+  border: 2px solid rgba(216, 193, 194, 0.3);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 8px 8px 0px 0px var(--primary);
+  transform: translate(-2px, -2px);
+}
+
+.cardDefault {
+  background: #ffffff;
+}
+
+.cardPrimary {
+  background: var(--primary);
+  color: var(--on-primary);
+  border-color: var(--primary);
+}
+
+.cardSecondary {
+  background: var(--secondary-container);
+  color: var(--on-secondary-container);
+  border-color: var(--primary);
+}
+
+.iconWrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.iconDefault {
+  background: rgba(86, 28, 36, 0.1);
+}
+
+.iconPrimary {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.iconSecondary {
+  background: rgba(58, 7, 16, 0.1);
+}
+
+.cardTitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.cardDesc {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.cardDescMuted {
+  opacity: 0.8;
+}
+
+.statValue {
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.statValuePrimary {
+  color: var(--primary);
+}
+
+.statValueLight {
+  color: var(--secondary-fixed);
+}
+
+.statLabel {
+  font-size: 16px;
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+.statLabelMuted {
+  color: var(--on-surface-variant);
+}
+
+.statLabelLight {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .header {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    padding: 0 var(--margin-mobile);
+  }
+}
+
+@media (min-width: 769px) {
+  .container {
+    padding: 0 var(--margin-desktop);
+  }
+}

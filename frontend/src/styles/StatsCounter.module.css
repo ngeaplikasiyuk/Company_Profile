@@ -1,0 +1,16 @@
+.counter {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.value {
+  font-size: 36px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.suffix {
+  font-size: 16px;
+  font-weight: 400;
+  margin-left: 4px;
+}
