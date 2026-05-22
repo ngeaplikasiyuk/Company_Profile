@@ -1,11 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 import styles from "@/styles/Navbar.module.css";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,13 +22,38 @@ export default function Navbar() {
     setMobileOpen(false);
   };
 
+  // Di homepage: cukup scroll ke atas (tanpa reload). Di halaman lain: biarkan
+  // link menavigasi ke beranda seperti biasa.
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setMobileOpen(false);
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <nav
         id="main-navbar"
         className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}
       >
-        <div className={styles.logo}>ngeaplikasiyuk</div>
+        <a
+          href="/"
+          className={styles.logo}
+          aria-label="ngeaplikasiyuk — beranda"
+          onClick={handleLogoClick}
+        >
+          <Image
+            src="/logo.png"
+            alt=""
+            width={40}
+            height={40}
+            className={styles.logoImg}
+            priority
+          />
+          <span className={styles.logoText}>ngeaplikasiyuk</span>
+        </a>
 
         <div className={styles.navLinks}>
           <a href="#tentang" className={styles.navLink}>

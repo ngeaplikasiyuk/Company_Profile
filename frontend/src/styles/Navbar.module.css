@@ -25,7 +25,19 @@
 }
 
 .logo {
-  font-size: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logoImg {
+  border-radius: 10px;
+  display: block;
+}
+
+.logoText {
+  font-size: 22px;
   line-height: 1.2;
   letter-spacing: -0.02em;
   font-weight: 700;

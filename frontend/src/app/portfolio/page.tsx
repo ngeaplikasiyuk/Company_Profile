@@ -1,26 +1,29 @@
-"use client";
-
-import { useState, useEffect } from "react";
+import type { Metadata } from "next";
 import PortfolioSection from "@/components/PortfolioSection";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import type { PortfolioItem } from "@/lib/api";
+import FetchErrorState from "@/components/FetchErrorState";
+import { getPortfolio } from "@/lib/api";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+export const metadata: Metadata = {
+  title: "Portofolio",
+  description:
+    "Karya dan proyek pilihan ngeaplikasiyuk — produk digital yang kami bangun untuk klien.",
+};
 
-export default function PortfolioPage() {
-  const [portfolio, setPortfolio] = useState<PortfolioItem[]>([]);
-
-  useEffect(() => {
-    fetch(`${API_BASE}/api/portfolio`)
-      .then((r) => r.json())
-      .then(setPortfolio);
-  }, []);
+export default async function PortfolioPage() {
+  let portfolio;
+  try {
+    portfolio = await getPortfolio();
+  } catch (err) {
+    console.error("Failed to fetch portfolio data:", err);
+    return <FetchErrorState />;
+  }
 
   return (
     <>
       <Navbar />
-      <main style={{ paddingTop: "128px" }}>
+      <main id="main-content" style={{ paddingTop: "128px" }}>
         {portfolio.length > 0 && <PortfolioSection items={portfolio} />}
       </main>
       <Footer />

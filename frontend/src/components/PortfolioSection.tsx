@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "@/styles/PortfolioSection.module.css";
 import { PortfolioItem } from "@/lib/api";
 
@@ -27,10 +28,12 @@ export default function PortfolioSection({ items }: PortfolioProps) {
                   index === 1 ? styles.imageWrapperFull : styles.imageWrapper
                 }
               >
-                <img
+                <Image
                   src={item.image_url}
                   alt={item.image_alt}
-                  loading="lazy"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  style={{ objectFit: "cover" }}
                 />
               </div>
               <div className={styles.overlay}>

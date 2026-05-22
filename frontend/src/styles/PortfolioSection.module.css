@@ -58,11 +58,13 @@
 }
 
 .imageWrapper {
+  position: relative;
   aspect-ratio: 4 / 5;
   overflow: hidden;
 }
 
 .imageWrapperFull {
+  position: relative;
   height: 100%;
   overflow: hidden;
 }

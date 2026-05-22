@@ -1,17 +1,36 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/lib/site";
+
+export const viewport: Viewport = {
+  themeColor: "#561C24",
+};
+
+const DEFAULT_TITLE = "ngeaplikasiyuk | Mengubah Ide Menjadi Produk Digital";
 
 export const metadata: Metadata = {
-  title: "ngeaplikasiyuk | Mengubah Ide Menjadi Produk Digital",
-  description:
-    "Studio pengembangan perangkat lunak butik yang berfokus pada estetika premium dan performa tanpa kompromi untuk startup masa depan.",
-  keywords: "ngeaplikasiyuk, software development, mobile app, web app, UI/UX, Bandung, Indonesia",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: DEFAULT_TITLE,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  keywords: ["ngeaplikasiyuk", "software development", "mobile app", "web app", "UI/UX", "Bandung", "Indonesia"],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "ngeaplikasiyuk | Mengubah Ide Menjadi Produk Digital",
-    description:
-      "Studio pengembangan perangkat lunak butik yang berfokus pada estetika premium dan performa tanpa kompromi.",
+    title: DEFAULT_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
     type: "website",
     locale: "id_ID",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: DEFAULT_TITLE,
+    description: SITE_DESCRIPTION,
   },
 };
 
@@ -35,6 +54,9 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <a href="#main-content" className="skip-link">
+          Lewati ke konten utama
+        </a>
         <div className="grain-overlay" />
         {children}
       </body>

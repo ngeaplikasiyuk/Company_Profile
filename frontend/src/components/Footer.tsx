@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "@/styles/Footer.module.css";
 
 export default function Footer() {
@@ -7,7 +8,16 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.content}>
         <div className={styles.brand}>
-          <div className={styles.logo}>ngeaplikasiyuk</div>
+          <div className={styles.logo}>
+            <Image
+              src="/logo.png"
+              alt=""
+              width={48}
+              height={48}
+              className={styles.logoImg}
+            />
+            <span>ngeaplikasiyuk</span>
+          </div>
           <p className={styles.brandDesc}>
             Membangun masa depan digital satu baris kode dalam satu waktu.
             Studio pengembangan butik dengan hati.

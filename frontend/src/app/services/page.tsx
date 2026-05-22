@@ -1,32 +1,30 @@
-"use client";
-
-import { useState, useEffect } from "react";
+import type { Metadata } from "next";
 import ServicesSection from "@/components/ServicesSection";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import type { Service, TechStack } from "@/lib/api";
+import FetchErrorState from "@/components/FetchErrorState";
+import { getServices, getTechStack } from "@/lib/api";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+export const metadata: Metadata = {
+  title: "Layanan",
+  description:
+    "Layanan pengembangan produk digital ngeaplikasiyuk: web app, mobile app, dan UI/UX dengan tech stack modern.",
+};
 
-export default function ServicesPage() {
-  const [services, setServices] = useState<Service[]>([]);
-  const [techStack, setTechStack] = useState<TechStack | null>(null);
-
-  useEffect(() => {
-    Promise.all([
-      fetch(`${API_BASE}/api/services`).then((r) => r.json()),
-      fetch(`${API_BASE}/api/tech-stack`).then((r) => r.json()),
-    ]).then(([svc, tech]) => {
-      setServices(svc);
-      setTechStack(tech);
-    });
-  }, []);
+export default async function ServicesPage() {
+  let services, techStack;
+  try {
+    [services, techStack] = await Promise.all([getServices(), getTechStack()]);
+  } catch (err) {
+    console.error("Failed to fetch services data:", err);
+    return <FetchErrorState />;
+  }
 
   return (
     <>
       <Navbar />
-      <main style={{ paddingTop: "128px" }}>
-        {services.length > 0 && techStack && (
+      <main id="main-content" style={{ paddingTop: "128px" }}>
+        {services.length > 0 && (
           <ServicesSection services={services} techStack={techStack.items} />
         )}
       </main>

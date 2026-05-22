@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import styles from "@/styles/TestimonialSection.module.css";
 import { Testimonial } from "@/lib/api";
 
@@ -55,7 +56,13 @@ export default function TestimonialSection({ testimonials }: TestimonialProps) {
 
                   <div className={styles.author}>
                     <div className={styles.avatar}>
-                      <img src={t.avatar_url} alt={t.name} loading="lazy" />
+                      <Image
+                        src={t.avatar_url}
+                        alt={`Foto ${t.name}`}
+                        fill
+                        sizes="56px"
+                        style={{ objectFit: "cover" }}
+                      />
                     </div>
                     <div className={styles.authorInfo}>
                       <p className={styles.authorName}>{t.name}</p>

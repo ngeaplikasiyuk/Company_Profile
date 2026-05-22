@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
+import Image from "next/image";
 import styles from "@/styles/Hero.module.css";
 import TextReveal from "./TextReveal";
 import MagneticWrap from "./MagneticWrap";
@@ -77,10 +78,13 @@ export default function Hero({ heroImageUrl }: HeroProps) {
         </MagneticWrap>
       </div>
       <div ref={imageRef} className={styles.heroImage} data-cursor="view">
-        <img
+        <Image
           src={heroImageUrl}
           alt="Dashboard digital ngeaplikasiyuk dengan visualisasi data modern"
-          loading="eager"
+          fill
+          priority
+          sizes="(max-width: 1280px) 100vw, 1280px"
+          style={{ objectFit: "cover" }}
         />
       </div>
     </section>

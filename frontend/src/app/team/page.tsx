@@ -1,26 +1,29 @@
-"use client";
-
-import { useState, useEffect } from "react";
+import type { Metadata } from "next";
 import TeamSection from "@/components/TeamSection";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import type { TeamMember } from "@/lib/api";
+import FetchErrorState from "@/components/FetchErrorState";
+import { getTeam } from "@/lib/api";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+export const metadata: Metadata = {
+  title: "Tim Kami",
+  description:
+    "Kenali tim di balik ngeaplikasiyuk — profesional yang siap mewujudkan visi digital Anda.",
+};
 
-export default function TeamPage() {
-  const [team, setTeam] = useState<TeamMember[]>([]);
-
-  useEffect(() => {
-    fetch(`${API_BASE}/api/team`)
-      .then((r) => r.json())
-      .then(setTeam);
-  }, []);
+export default async function TeamPage() {
+  let team;
+  try {
+    team = await getTeam();
+  } catch (err) {
+    console.error("Failed to fetch team data:", err);
+    return <FetchErrorState />;
+  }
 
   return (
     <>
       <Navbar />
-      <main style={{ paddingTop: "128px" }}>
+      <main id="main-content" style={{ paddingTop: "128px" }}>
         {team.length > 0 && <TeamSection members={team} />}
       </main>
       <Footer />

@@ -1,4 +1,7 @@
-from fastapi import APIRouter
+import logging
+
+from fastapi import APIRouter, Depends
+from rate_limit import contact_rate_limiter
 from models.schemas import (
     ContactInfo,
     ContactMessage,
@@ -9,6 +12,8 @@ from models.schemas import (
 )
 from data.seed_data import CONTACT_INFO, FAQS, TESTIMONIALS, TECH_STACK
 
+logger = logging.getLogger(__name__)
+
 router = APIRouter(prefix="/api", tags=["contact"])
 
 
@@ -18,12 +23,15 @@ async def get_contact_info():
     return CONTACT_INFO
 
 
-@router.post("/contact", response_model=ContactResponse)
+@router.post(
+    "/contact",
+    response_model=ContactResponse,
+    dependencies=[Depends(contact_rate_limiter)],
+)
 async def submit_contact(message: ContactMessage):
     """Menerima pesan kontak dari form."""
-    print(f"📩 Pesan baru dari {message.name} ({message.email})")
-    print(f"   Subjek: {message.subject}")
-    print(f"   Pesan: {message.message}")
+    # Jangan log isi pesan / email (PII). Catat saja bahwa pesan masuk.
+    logger.info("Pesan kontak baru diterima (subjek panjang: %d karakter)", len(message.subject))
 
     return ContactResponse(
         success=True,

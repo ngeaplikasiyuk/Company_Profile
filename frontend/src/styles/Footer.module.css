@@ -22,11 +22,19 @@
 }
 
 .logo {
-  font-size: 48px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 32px;
   line-height: 1.2;
   letter-spacing: -0.02em;
   font-weight: 700;
   color: var(--primary);
+}
+
+.logoImg {
+  border-radius: 12px;
+  display: block;
 }
 
 .brandDesc {

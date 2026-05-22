@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "@/styles/TeamSection.module.css";
 import { TeamMember } from "@/lib/api";
 
@@ -21,10 +22,12 @@ export default function TeamSection({ members }: TeamProps) {
           {members.map((member) => (
             <div key={member.id} className={styles.card}>
               <div className={styles.photoWrapper}>
-                <img
+                <Image
                   src={member.photo_url}
-                  alt={member.name}
-                  loading="lazy"
+                  alt={`Foto ${member.name}, ${member.position}`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 300px"
+                  style={{ objectFit: "cover" }}
                 />
               </div>
               <div className={styles.info}>

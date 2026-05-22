@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "@/styles/ContactSection.module.css";
 import { ContactInfo } from "@/lib/api";
 
@@ -53,10 +54,12 @@ export default function ContactSection({ contactInfo, officeImageUrl }: ContactP
 
         <div className={styles.imageFrame}>
           <div className={styles.imageInner}>
-            <img
+            <Image
               src={officeImageUrl}
               alt="Kantor ngeaplikasiyuk di Bandung"
-              loading="lazy"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              style={{ objectFit: "cover" }}
             />
           </div>
         </div>
