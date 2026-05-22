@@ -1,0 +1,69 @@
+.wrap {
+  display: inline;
+}
+
+.wordOuter {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: baseline;
+  line-height: inherit;
+  /* Extra room so descenders (g, y, p) AND italic slants aren't clipped */
+  padding: 0.05em 0.18em 0.15em 0.05em;
+  margin: -0.05em -0.18em -0.15em -0.05em;
+}
+
+.wordInner {
+  display: inline-block;
+  transition:
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity, filter;
+}
+
+.space {
+  display: inline-block;
+  width: 0.25em;
+}
+
+/* === Variant: rise (default) === */
+.variant_rise .wordInner {
+  transform: translateY(110%);
+  opacity: 0;
+}
+.variant_rise.visible .wordInner {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* === Variant: blur === */
+.variant_blur .wordInner {
+  opacity: 0;
+  filter: blur(12px);
+  transform: translateY(20%);
+}
+.variant_blur.visible .wordInner {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+/* === Variant: tilt === */
+.variant_tilt .wordInner {
+  transform: translateY(80%) rotate(6deg);
+  opacity: 0;
+  transform-origin: bottom left;
+}
+.variant_tilt.visible .wordInner {
+  transform: translateY(0) rotate(0);
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wordInner {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+}
