@@ -5,6 +5,7 @@ import Image from "next/image";
 import styles from "@/styles/Hero.module.css";
 import TextReveal from "./TextReveal";
 import MagneticWrap from "./MagneticWrap";
+import DotField from "./DotField";
 
 interface HeroProps {
   heroImageUrl: string;
@@ -48,44 +49,57 @@ export default function Hero({ heroImageUrl }: HeroProps) {
 
   return (
     <section className={styles.hero} id="hero">
-      <h1 className={styles.heading}>
-        <TextReveal as="span" stagger={0.07} immediate>
-          Mengubah Ide Menjadi
-        </TextReveal>{" "}
-        <span className={styles.highlight}>
-          <TextReveal as="span" stagger={0.07} variant="blur" immediate>
-            Produk Digital
-          </TextReveal>
-        </span>{" "}
-        <TextReveal as="span" stagger={0.07} immediate>
-          Berkualitas
-        </TextReveal>
-      </h1>
-      <p className={styles.subtext}>
-        Studio pengembangan perangkat lunak butik yang berfokus pada estetika
-        premium dan performa tanpa kompromi untuk startup masa depan.
-      </p>
-      <div className={styles.buttons}>
-        <MagneticWrap strength={14}>
-          <a href="#produk" className={styles.primaryBtn}>
-            lihat detil produk
-          </a>
-        </MagneticWrap>
-        <MagneticWrap strength={14}>
-          <a href="#servis" className={styles.secondaryBtn}>
-            servis kami
-          </a>
-        </MagneticWrap>
-      </div>
-      <div ref={imageRef} className={styles.heroImage} data-cursor="view">
-        <Image
-          src={heroImageUrl}
-          alt="Dashboard digital ngeaplikasiyuk dengan visualisasi data modern"
-          fill
-          priority
-          sizes="(max-width: 1280px) 100vw, 1280px"
-          style={{ objectFit: "cover" }}
+      <div className={styles.dotFieldWrapper}>
+        <DotField
+          dotRadius={2.8}
+          dotSpacing={26}
+          bulgeStrength={85}
+          glowRadius={600}
+          glowColor="rgba(86, 28, 36, 0.18)"
+          gradientFrom="rgba(86, 28, 36, 0.65)"
+          gradientTo="rgba(109, 41, 50, 0.35)"
         />
+      </div>
+      <div className={styles.heroInner}>
+        <h1 className={styles.heading}>
+          <TextReveal as="span" stagger={0.07} immediate>
+            Mengubah Ide Menjadi
+          </TextReveal>{" "}
+          <span className={styles.highlight}>
+            <TextReveal as="span" stagger={0.07} variant="blur" immediate>
+              Produk Digital
+            </TextReveal>
+          </span>{" "}
+          <TextReveal as="span" stagger={0.07} immediate>
+            Berkualitas
+          </TextReveal>
+        </h1>
+        <p className={styles.subtext}>
+          Studio pengembangan perangkat lunak butik yang berfokus pada estetika
+          premium dan performa tanpa kompromi untuk startup masa depan.
+        </p>
+        <div className={styles.buttons}>
+          <MagneticWrap strength={14}>
+            <a href="#produk" className={styles.primaryBtn}>
+              Lihat Detail Produk
+            </a>
+          </MagneticWrap>
+          <MagneticWrap strength={14}>
+            <a href="#layanan" className={styles.secondaryBtn}>
+              Layanan kami
+            </a>
+          </MagneticWrap>
+        </div>
+        <div ref={imageRef} className={styles.heroImage} data-cursor="view">
+          <Image
+            src={heroImageUrl}
+            alt="Dashboard digital ngeaplikasiyuk dengan visualisasi data modern"
+            fill
+            priority
+            sizes="(max-width: 1280px) 100vw, 1280px"
+            style={{ objectFit: "cover" }}
+          />
+        </div>
       </div>
     </section>
   );

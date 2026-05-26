@@ -13,7 +13,7 @@ export default function PortfolioSection({ items }: PortfolioProps) {
         <div className={styles.header}>
           <div>
             <span className={styles.label}>Portfolio</span>
-            <h2 className={styles.title}>produk kami</h2>
+            <h2 className={styles.title}>Produk Kami</h2>
           </div>
         </div>
 

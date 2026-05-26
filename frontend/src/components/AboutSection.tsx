@@ -87,7 +87,7 @@ export default function AboutSection({ stats }: AboutProps) {
               <span
                 className="material-symbols-outlined"
                 style={{
-                  color: "var(--primary)",
+                  color: "var(--on-primary)",
                   fontVariationSettings: "'FILL' 1",
                 }}
               >
@@ -100,7 +100,7 @@ export default function AboutSection({ stats }: AboutProps) {
               memenangkan pasar.
             </p>
             <div>
-              <span className={`${styles.statValue} ${styles.statValuePrimary}`}>
+              <span className={`${styles.statValue} ${styles.statValueLight}`}>
                 {stats.expert_support}
               </span>
               <span className={`${styles.statLabel} ${styles.statLabelMuted}`}>

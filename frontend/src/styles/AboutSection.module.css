@@ -132,7 +132,7 @@
 }
 
 .statLabelMuted {
-  color: var(--on-surface-variant);
+  color: var(--on-primary);
 }
 
 .statLabelLight {

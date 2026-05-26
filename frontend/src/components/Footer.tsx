@@ -35,7 +35,7 @@ export default function Footer() {
                 <a href="#produk">Produk</a>
               </li>
               <li className={styles.linkItem}>
-                <a href="#servis">Servis</a>
+                <a href="#layanan">Layanan</a>
               </li>
               <li className={styles.linkItem}>
                 <a href="#kontak">Kontak</a>

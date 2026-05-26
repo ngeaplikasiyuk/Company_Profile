@@ -77,7 +77,7 @@ export default async function Home() {
       />
       <ScrollAnimator />
       <Navbar />
-      <main id="main-content" style={{ paddingTop: "128px" }}>
+      <main id="main-content" style={{ paddingTop: "64px" }}>
         <div className="fade-in-up">
           <Hero heroImageUrl={HERO_IMAGE_URL} />
         </div>

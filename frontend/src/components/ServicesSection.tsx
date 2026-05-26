@@ -4,11 +4,41 @@ import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import styles from "@/styles/ServicesSection.module.css";
 import { Service } from "@/lib/api";
+import LogoLoop from "./LogoLoop";
+import { 
+  SiReact, 
+  SiNextdotjs, 
+  SiTypescript, 
+  SiTailwindcss, 
+  SiNodedotjs, 
+  SiFigma, 
+  SiPostgresql, 
+  SiDocker,
+  SiPrisma,
+  SiFramer,
+  SiVite,
+  SiRedux
+} from "react-icons/si";
 
 interface ServicesProps {
   services: Service[];
   techStack: string[];
 }
+
+const techLogos = [
+  { node: <SiReact />, title: "React" },
+  { node: <SiNextdotjs />, title: "Next.js" },
+  { node: <SiTypescript />, title: "TypeScript" },
+  { node: <SiTailwindcss />, title: "Tailwind CSS" },
+  { node: <SiNodedotjs />, title: "Node.js" },
+  { node: <SiFigma />, title: "Figma" },
+  { node: <SiPostgresql />, title: "PostgreSQL" },
+  { node: <SiDocker />, title: "Docker" },
+  { node: <SiPrisma />, title: "Prisma" },
+  { node: <SiFramer />, title: "Framer Motion" },
+  { node: <SiVite />, title: "Vite" },
+  { node: <SiRedux />, title: "Redux" },
+];
 
 export default function ServicesSection({ services, techStack }: ServicesProps) {
   const [selected, setSelected] = useState<Service | null>(null);
@@ -35,10 +65,10 @@ export default function ServicesSection({ services, techStack }: ServicesProps) 
   }, [selected]);
 
   return (
-    <section className={styles.section} id="servis">
+    <section className={styles.section} id="layanan">
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>servis</h2>
+          <h2 className={styles.title}>Layanan Kami</h2>
           <p className={styles.subtitle}>
             Solusi teknologi ujung-ke-ujung yang dirancang khusus untuk
             pertumbuhan bisnis Anda.
@@ -66,11 +96,16 @@ export default function ServicesSection({ services, techStack }: ServicesProps) 
         <div className={styles.techStack}>
           <h3 className={styles.techStackLabel}>Tech Stack Handalan Kami</h3>
           <div className={styles.techItems}>
-            {techStack.map((tech, index) => (
-              <span key={index} className={styles.techItem}>
-                {tech}
-              </span>
-            ))}
+            <LogoLoop
+              logos={techLogos}
+              speed={60}
+              gap={64}
+              logoHeight={48}
+              scaleOnHover
+              fadeOut
+              fadeOutColor="#ffffff"
+              ariaLabel="Tech Stack handalan ngeaplikasiyuk"
+            />
           </div>
         </div>
       </div>

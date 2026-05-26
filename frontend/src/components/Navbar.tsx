@@ -62,8 +62,8 @@ export default function Navbar() {
           <a href="#produk" className={styles.navLink}>
             Produk
           </a>
-          <a href="#servis" className={styles.navLink}>
-            Servis
+          <a href="#layanan" className={styles.navLink}>
+            Layanan
           </a>
           <a href="#kontak" className={styles.navLink}>
             Kontak
@@ -95,8 +95,8 @@ export default function Navbar() {
         <a href="#produk" className={styles.mobileNavLink} onClick={handleNavClick}>
           Produk
         </a>
-        <a href="#servis" className={styles.mobileNavLink} onClick={handleNavClick}>
-          Servis
+        <a href="#layanan" className={styles.mobileNavLink} onClick={handleNavClick}>
+          Layanan
         </a>
         <a href="#kontak" className={styles.mobileNavLink} onClick={handleNavClick}>
           Kontak

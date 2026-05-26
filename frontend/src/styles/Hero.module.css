@@ -1,9 +1,29 @@
 .hero {
+  width: 100%;
+  position: relative;
+  padding-top: 180px;
+  padding-bottom: var(--section-gap);
+  text-align: center;
+  margin-top: -128px;
+}
+
+.heroInner {
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 var(--margin-mobile);
-  margin-bottom: var(--section-gap);
-  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.dotFieldWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
 }
 
 .heading {
@@ -100,7 +120,7 @@
 }
 
 @media (max-width: 768px) {
-  .hero {
+  .heroInner {
     padding: 0 var(--margin-mobile);
   }
 
@@ -120,7 +140,7 @@
 }
 
 @media (min-width: 769px) {
-  .hero {
+  .heroInner {
     padding: 0 var(--margin-desktop);
   }
 }
